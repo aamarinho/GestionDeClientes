@@ -1,0 +1,3 @@
+C:\Users\Andrea\Desktop\Ingeniería Informática\4 Cuarto\DIA\practica\GestionDeClientes\GestionDeClientes\bin\Release\GestionDeClientes.exe
+C:\Users\Andrea\Desktop\Ingeniería Informática\4 Cuarto\DIA\practica\GestionDeClientes\GestionDeClientes\obj\x86\Release\GestionDeClientes.csprojResolveAssemblyReference.cache
+C:\Users\Andrea\Desktop\Ingeniería Informática\4 Cuarto\DIA\practica\GestionDeClientes\GestionDeClientes\obj\x86\Release\GestionDeClientes.exe
