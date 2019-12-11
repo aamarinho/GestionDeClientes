@@ -35,12 +35,12 @@ namespace GestionDeClientes.UI
             String textTelefono = Formulario.EdTelefono.Text;
             String textEmail = Formulario.EdEmail.Text;
             String textDireccion = Formulario.EdDireccion.Text;
-            //Console.Write(textNIF,textNombre,textTelefono,textEmail,textDireccion);
             
             Cliente c = new Cliente(textNIF,textNombre,textTelefono,textEmail,textDireccion);
 
             Clientes.Inserta(c);
             MainView.Lista.Items.Add(c.ToString());
+            Formulario.Close();
         }
 
         Cliente encontrarCliente(String NIF)
@@ -61,9 +61,7 @@ namespace GestionDeClientes.UI
             String NIF = MainView.Lista.SelectedItems[0].Text.Substring(0, 9);
             Console.WriteLine(NIF);
             Cliente clienteActual = encontrarCliente(NIF);
-            //VistaDetallada = new VistaDetallada(clienteActual);
             VistaDetallada.Cliente = clienteActual;
-            //VistaDetallada.Invalidate();
             VistaDetallada.ShowDialog();
         }
 
@@ -74,11 +72,9 @@ namespace GestionDeClientes.UI
             String textTelefono = VistaDetallada.EdTelefono.Text;
             String textEmail = VistaDetallada.EdEmail.Text;
             String textDireccion = VistaDetallada.EdDireccion.Text;
-            Console.WriteLine("NIF PARA HACER LA CONSULTA"+textNIF);
-            Console.WriteLine("NOMBRE QUE MODIFICO"+textNombre);
+            
             Cliente clienteActual = encontrarCliente(textNIF);
             
-            //Clientes.Modifica(clienteActual);
             clienteActual.Nombre = textNombre;
             clienteActual.Telefono = textTelefono;
             clienteActual.Email = textEmail;
@@ -88,17 +84,7 @@ namespace GestionDeClientes.UI
             
             MainView.Lista.Items.RemoveAt(pos);
             MainView.Lista.Items.Insert(pos, clienteActual.ToString());
-            
-            Console.WriteLine("Ahora la lista de la coleccion");
-            foreach (Cliente c in Clientes.Clientes)
-            {
-                Console.WriteLine(c.ToString());
-            }
-            Console.WriteLine("Ahora la lista de la vista");
-            foreach (WFrm.ListViewItem i in MainView.Lista.Items)
-            {
-                Console.WriteLine(i);
-            }
+            VistaDetallada.Close();
         }
 
         void Eliminar(Object sender, EventArgs e)
@@ -108,16 +94,7 @@ namespace GestionDeClientes.UI
             int pos = Clientes.Posicion(clienteActual);
             Clientes.Elimina(clienteActual);
             MainView.Lista.Items.RemoveAt(pos);
-            Console.WriteLine("Ahora la lista de la coleccion");
-            foreach (Cliente c in Clientes.Clientes)
-            {
-                Console.WriteLine(c.ToString());
-            }
-            Console.WriteLine("Ahora la lista de la vista");
-            foreach (WFrm.ListViewItem i in MainView.Lista.Items)
-            {
-                Console.WriteLine(i);
-            }
+            VistaDetallada.Close();
         }
 
         void Guardar(Object sender, EventArgs e)
@@ -128,6 +105,7 @@ namespace GestionDeClientes.UI
         void Recuperar(Object sender, EventArgs e)
         {
             Cliente[] clientesRecuperar = Clientes.LeerClientesXmlDom();
+            MainView.Lista.Items.Clear();
             for (int i = 0; i < clientesRecuperar.Length; i++)
             {
                 MainView.Lista.Items.Add(clientesRecuperar[i].ToString());

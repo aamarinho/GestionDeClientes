@@ -9,6 +9,7 @@ namespace GestionDeClientes.UI
     {
         public VistaDetallada(Cliente c)
         {
+            this.MinimumSize = new Size(900, 600);
             this.Build();
             this.Cliente = c;
         }
@@ -17,6 +18,7 @@ namespace GestionDeClientes.UI
         {
             var mainPanel = new WFrms.TableLayoutPanel
             {
+                AutoScroll = true,
                 Dock=WFrms.DockStyle.Fill,
                 Font = new Font("Century Gothic", 11F, FontStyle.Regular, GraphicsUnit.Point, 0)
             };

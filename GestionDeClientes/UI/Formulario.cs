@@ -9,6 +9,7 @@ namespace GestionDeClientes.UI
     {
         public Formulario()
         {
+            this.MinimumSize = new Size(900, 600);
             this.Build();
         }
 
@@ -16,6 +17,7 @@ namespace GestionDeClientes.UI
         {
             var mainPanel = new WFrms.TableLayoutPanel
             {
+                AutoScroll = true,
                 Dock=WFrms.DockStyle.Fill,
                 Font = new Font("Century Gothic", 11F, FontStyle.Regular, GraphicsUnit.Point, 0)
             };

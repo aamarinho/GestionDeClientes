@@ -6,6 +6,7 @@
     {
         public MainView()
         {
+            this.MinimumSize = new Size(400, 200);
             this.Build();
         }
 
@@ -13,6 +14,7 @@
         {
             var mainPanel = new WFrms.TableLayoutPanel
             {
+                AutoScroll = true,
                 Dock=WFrms.DockStyle.Fill,
                 BackColor = Color.Black,
                 Text = "GESTION DE CLIENTES"
@@ -28,7 +30,7 @@
         {
             var pnl = new WFrms.Panel
             {
-                Dock = WFrms.DockStyle.Top
+                Dock = WFrms.DockStyle.Fill
             };
             
             this.BotonInsertar = new WFrms.Button
@@ -43,14 +45,15 @@
             
             this.Lista = new WFrms.ListView
             {
-                Dock = WFrms.DockStyle.Fill,
+                Dock = WFrms.DockStyle.Bottom,
                 Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point, 0),
                 BackColor = Color.White,
                 Margin = new WFrms.Padding(3, 5, 3, 5)
             };
             
-            pnl.Controls.Add(this.Lista);
+            
             pnl.Controls.Add(this.BotonInsertar);
+            pnl.Controls.Add(this.Lista);
             
             return pnl;
         }
